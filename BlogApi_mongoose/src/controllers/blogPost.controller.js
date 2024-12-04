@@ -1,10 +1,5 @@
 "use strict";
 
-module.exports.blogPost = {
-  list: async (req, res) => {},
+const { BlogCategory } = require("../models/blogCategory.model");
+const { NotFoundError } = require("../errors/customError");
 
-  create: async (req, res) => {},
-  read: async (req, res) => {},
-  update: async (req, res) => {},
-  delete: async (req, res) => {},
-};
