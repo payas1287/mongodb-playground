@@ -3,7 +3,7 @@
 /* -------------------------------------------------------
     EXPRESSJS - BLOG Project with Mongoose
 ------------------------------------------------------- */
-const { BlogCategory } = require("../models/blogCategory.model");
+const { BlogCategory } = require("../models/blogCategory.models");
 const { NotFoundError } = require("../errors/customError");
 // Call Models:
 

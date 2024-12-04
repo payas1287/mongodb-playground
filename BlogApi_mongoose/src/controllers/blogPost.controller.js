@@ -4,15 +4,28 @@
 ------------------------------------------------------- */
 
 // Call Models:
+const { BlogPost } = require("../models/blogPost.models");
 
 // BlogPost Controller:
 
 module.exports.blogPost = {
-  list: async (req, res) => {},
+  list: async (req, res) => {
+    const data = await BlogPost.find().populate("categoryId");
+
+    res.send({
+      result: data,
+    });
+  },
 
   // CRUD ->
 
-  create: async (req, res) => {},
+  create: async (req, res) => {
+    const data = await BlogPost.create(req.body);
+
+    res.send({
+      result: data,
+    });
+  },
 
   read: async (req, res) => {},
 

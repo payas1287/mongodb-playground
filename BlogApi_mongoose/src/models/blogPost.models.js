@@ -12,9 +12,9 @@ const mongoose = require("mongoose");
 const BlogPostSchema = new mongoose.Schema(
   {
     categoryId: {
-      type: mongoose.Schema.Types.ObjectId(),
+      type: mongoose.Schema.Types.ObjectId,
       ref: "BlogCategory",
-      required: true,
+      required: true
     },
     title: {
       type: String,
