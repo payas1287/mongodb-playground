@@ -1,12 +1,19 @@
 "use strict";
+/* -------------------------------------------------------
+    EXPRESSJS - BLOG Project with Mongoose
+------------------------------------------------------- */
+// Mongoose:
 
 const mongoose = require("mongoose");
 
+/* ------------------------------------------------------- */
+
+// BlogPost Schema:
 const BlogPostSchema = new mongoose.Schema(
   {
     categoryId: {
       type: mongoose.Schema.Types.ObjectId(),
-      ef: "BlogCategory",
+      ref: "BlogCategory",
       required: true,
     },
     title: {
@@ -15,7 +22,7 @@ const BlogPostSchema = new mongoose.Schema(
       required: true,
     },
     content: {
-      tyepe: true,
+      type: String,
       trim: true,
       required: true,
     },

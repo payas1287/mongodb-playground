@@ -1,10 +1,16 @@
 "use strict";
+/* -------------------------------------------------------
+    EXPRESSJS - BLOG Project with Mongoose
+------------------------------------------------------- */
 
-module.exports.blogPost = {
-  list: async (req, res) => {},
+const router = require("express").Router();
 
-  create: async (req, res) => {},
-  read: async (req, res) => {},
-  update: async (req, res) => {},
-  delete: async (req, res) => {},
-};
+// Call Controllers:
+
+/* ------------------------------------------------------- */
+
+// URL: /blog ->
+
+// BlogPost
+
+/* ------------------------------------------------------- */

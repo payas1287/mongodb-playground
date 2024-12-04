@@ -15,7 +15,7 @@ class CustomError extends Error {
 class NotFoundError extends Error {
   name = "NotFoundError";
   statusCode = StatusCodes.NOT_FOUND;
-  constructor(message = "Not Found") {
+  constructor(message = "Not found") {
     super(message);
   }
 }
