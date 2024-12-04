@@ -27,11 +27,29 @@ module.exports.blogPost = {
     });
   },
 
-  read: async (req, res) => {},
+  read: async (req, res) => {
+    const data = await BlogPost.read(req.body);
 
-  update: async (req, res) => {},
+    res.send({
+      result: data,
+    })
+  },
 
-  delete: async (req, res) => {},
+  update: async (req, res) => {
+    const data = await BlogPost.update(req.body);
+
+    res.send({
+      result: data,
+    })
+  },
+
+  delete: async (req, res) => {
+    const data = await BlogPost.delete(req.body);
+
+    res.send({
+      result: data,
+    })
+  },
 };
 
 /* ------------------------------------------------------- */
