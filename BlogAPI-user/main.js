@@ -19,15 +19,16 @@ require("./src/config/dbConnection")();
 //require("./src/config/dbConnection");
 
 /* ------------------------------------------------------- */
-
+app.use("/blog/cayegory", require("./src/routes/blogCatagory.router"));
+app.use("/blog/post", require("./src/routes/blogPost.router"));
+app.use("/user", require("./src/routes/user.routes"));
 app.all("/", (req, res) => {
   res.send("WELCOME TO BLOG API");
 });
 
 /* ------------------------------------------------------- */
 // Routes:
-app.use("/blog", require("./src/routes/blogCatagory.router"))
-app.use("/blog", require("./src/routes/blogPost.router"))
+
 /* ------------------------------------------------------- */
 app.use("*", (req, res) => {
   res.status(404).send({ isError: true, message: "The route is NOT FOUND" });
