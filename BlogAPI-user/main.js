@@ -26,7 +26,8 @@ app.all("/", (req, res) => {
 
 /* ------------------------------------------------------- */
 // Routes:
-
+app.use("/blog", require("./src/routes/blogCatagory.router"))
+app.use("/blog", require("./src/routes/blogPost.router"))
 /* ------------------------------------------------------- */
 app.use("*", (req, res) => {
   res.status(404).send({ isError: true, message: "The route is NOT FOUND" });

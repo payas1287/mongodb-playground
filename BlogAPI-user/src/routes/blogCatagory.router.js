@@ -4,11 +4,14 @@
 ------------------------------------------------------- */
 
 const router = require("express").Router();
+const { blogCategory } = require("../controllers/blogCategory.controller");
 
-// Call Controllers:
+router.route("/cayegory").get(blogCategory.list).post(blogCategory.create);
+router
+  .route("/cayegory/:categoryId")
+  .get(blogCategory.read)
+  .put(blogCategory.update)
+  .patch(blogCategory.update)
+  .delete(blogCategory.delete);
 
-/* ------------------------------------------------------- */
-
-// URL: /blog ->
-
-// BlogCategory
+module.exports = router;
