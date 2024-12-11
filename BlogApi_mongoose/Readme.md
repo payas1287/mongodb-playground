@@ -34,7 +34,7 @@ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value); // E-posta regex kontrolü
       },
       message: (props) => `${props.value} geçerli bir e-posta adresi değil!`,
 },
-**Validate-2**
+**Validate-3**
     validate: {
       validator: async function (value) {
         // Kullanıcı adının benzersiz olup olmadığını kontrol et
