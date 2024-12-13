@@ -4,7 +4,7 @@
     EXPRESS - Personnel API
 ------------------------------------------------------- */
 
-const Personnel = require("../models/personnel.model");
+const Personnel = require("../models/personnel");
 const passwordEncrypt = require("../helpers/passwordEncrypt");
 
 module.exports = {
@@ -97,47 +97,47 @@ module.exports = {
 
   //! LOGIN & LOGOUT
 
-  login: async (req, res) => {
-    const { username, password } = req.body;
+  // login: async (req, res) => {
+  //   const { username, password } = req.body;
 
-    if (username && password) {
-      const user = await Personnel.findOne({ username, password });
-      if (user) {
-        if (user.password !== passwordEncrypt(password)) {
-          res.errorStatusCode = 401;
-          throw new Error("Login parameters are not true.");
-        }
-        // Set Session:
-        req.session = {
-          id: user._id,
-          password: user.password,
-        };
-        // Set Cookie:
-        if (req.body?.rememberMe) {
-          req.session.rememberMe = true;
-          req.sessionOptions.maxAge = 1000 * 60 * 60 * 24 * 3; // 3 Days
-        }
+  //   if (username && password) {
+  //     const user = await Personnel.findOne({ username, password });
+  //     if (user) {
+  //       if (user.password !== passwordEncrypt(password)) {
+  //         res.errorStatusCode = 401;
+  //         throw new Error("Login parameters are not true.");
+  //       }
+  //       // Set Session:
+  //       req.session = {
+  //         id: user._id,
+  //         password: user.password,
+  //       };
+  //       // Set Cookie:
+  //       if (req.body?.rememberMe) {
+  //         req.session.rememberMe = true;
+  //         req.sessionOptions.maxAge = 1000 * 60 * 60 * 24 * 3; // 3 Days
+  //       }
 
-        res.status(200).send({
-          error: false,
-          message: "Login is OK",
-          user,
-        });
-      } else {
-        res.errorStatusCode = 401;
-        throw new Error("Wrong Username or Password.");
-      }
-    } else {
-      res.errorStatusCode = 401;
-      throw new Error("Please enter a valid username and password.");
-    }
-  },
+  //       res.status(200).send({
+  //         error: false,
+  //         message: "Login is OK",
+  //         user,
+  //       });
+  //     } else {
+  //       res.errorStatusCode = 401;
+  //       throw new Error("Wrong Username or Password.");
+  //     }
+  //   } else {
+  //     res.errorStatusCode = 401;
+  //     throw new Error("Please enter a valid username and password.");
+  //   }
+  // },
 
-  logout: async (req, res) => {
-    req.session = null;
-    res.send({
-      error: false,
-      maessage: "Logout is completed",
-    });
-  },
+  // logout: async (req, res) => {
+  //   req.session = null;
+  //   res.send({
+  //     error: false,
+  //     maessage: "Logout is completed",
+  //   });
+  // },
 };
