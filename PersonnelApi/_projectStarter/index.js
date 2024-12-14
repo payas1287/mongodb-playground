@@ -18,6 +18,21 @@ const PORT = process.env?.PORT || 8000;
 require("express-async-errors");
 
 /* ------------------------------------------------------- */
+
+app.use(require('./src/middlewares/loger'))
+app.use('/documents/json', (req, res) => {
+  res.sendFile('swagger.json', { rot: '. '})
+})
+const swaggerUi = require('swagger-ui-express')
+const swaggerJson = require('./swagger.json')
+app.use('/document/swagger', swaggerUi.serve, swaggerJson, {swaggerOptions: {persistAuthorization: true}})
+
+const redoc = require('redoc-express')
+app.use('/documents/redoc', redoc({ specUrl: '/documents/json', title: 'Redoc UI'}))
+
+
+
+
 //db connection
 dbConnection();
 
