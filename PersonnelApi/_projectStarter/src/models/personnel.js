@@ -1,6 +1,6 @@
 "use strict";
 
-const { mongoosd } = require("../configs/dbConnection");
+const { mongoose } = require("../configs/dbConnection");
 const passwordEncrypt = require("../helpers/passwordEncrypt");
 const department = require("./department");
 
