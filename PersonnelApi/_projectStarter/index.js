@@ -31,7 +31,7 @@ require("express-async-errors");
 // // app.use(morgan('common'))
 // // app.use(morgan('combined'))
 // // Custom Logs:
-// // app.use(morgan('TIME=":date[iso]" - URL=":url" - Method=":method" - IP=":remote-addr" - Ref=":referrer" - Status=":status" - Sign=":user-agent" (:response-time[digits] ms)'))
+//app.use(morgan('TIME=":date[iso]" - URL=":url" - Method=":method" - IP=":remote-addr" - Ref=":referrer" - Status=":status" - Sign=":user-agent" (:response-time[digits] ms)'))
 
 // // Write to file:
 // // https://nodejs.org/api/fs.html#file-system-flags
