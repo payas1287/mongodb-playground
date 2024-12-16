@@ -1,16 +1,30 @@
 "use strict";
-const Personnel = require("../models/personnel");
+const Personel = require("../models/personnel");
 const Token = require("../models/token");
 const passwordEncrypt = require("../helpers/passwordEncrypt");
-
 module.exports = {
   login: async (req, res) => {
+    /*
+            #swagger.tags = ['Authentication']
+            #swagger.summary = 'Login'
+            #swagger.description = `Login with username & password`
+            #swagger.parameters['body'] = {
+                in: 'body',
+                required: true,
+                schema: {
+                    username: '*String',
+                    password: '*String'
+                }
+            }
+            _swagger.ignore = true
+            _swagger.deprecated = true
+        */
     const { username, password } = req.body;
     if (username && password) {
-      const user = await Personnel.findOne({ username, password });
+      const user = await Personel.findOne({ username, password });
       if (user && user.isActive) {
         let tokenData = await Token.findOne({ userId: user._id });
-        if (!token) {
+        if (!tokenData) {
           const tokenKey = passwordEncrypt(user._id + Date.now());
           tokenData = await Token.create({ userId: user._id, token: tokenKey });
         }
@@ -25,10 +39,14 @@ module.exports = {
       }
     } else {
       res.errorStatusCode = 403;
-      throw new Error("Lütfen kullanıcı adı ve şifre giriniz.");
+      throw new Error("Lütfen kullanıcı adı ve şifre giriniz");
     }
   },
   logout: async (req, res) => {
+    /*
+            #swagger.tags = ['Authentication']
+            #swagger.summary = 'Logout'
+        */
     req.session = null;
     const auth = req.headers?.authorization || null;
     const tokenKey = auth ? auth.split(" ") : null;
