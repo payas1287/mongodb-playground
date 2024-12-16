@@ -1,19 +1,20 @@
-"use strict";
+"use strict"
+/* -------------------------------------------------------
+    EXPRESS - Personnel API
+------------------------------------------------------- */
+// MongoDB Connection:
 
-const { mongoose } = require("../configs/dbConnection");
-const TokenSchema = new mongoose.Schema(
-  {
-    userId: {
-      type: moongoose.Schema.Types.ObjectId,
-      ref: "Personel",
-      required: true,
-      index: true,
-      unique: true,
-    },
-  },
-  {
-    collection: "tokens",
-    timestamps: true,
-  }
-);
-module.exports = mongoose.model("Token", TokenSchema);
+const mongoose = require('mongoose')
+
+const dbConnection = function() {
+    // Connect:
+    mongoose.connect(process.env.MONGODB)
+        .then(() => console.log('* DB Connected * '))
+        .catch((err) => console.log('* DB Not Connected * ', err))
+}
+
+/* ------------------------------------------------------- */
+module.exports = {
+    mongoose,
+    dbConnection
+} 

@@ -1,9 +1,21 @@
-"use strict";
-const router = require("express").Router();
+"use strict"
 
-router.use("/auth", require("./auth"));
-router.use("/tokens", require("./token"));
-router.use("/personnel", require("./personnel"));
-router.use("/deprtment", require("./department"));
+const router= require("express").Router()
 
-module.exports = router;
+//auth
+
+router.use("/auth", require("./auth"))
+
+//token
+
+router.use("/tokens", require("./token"))
+
+//personnel
+
+router.use("/personnel", require("./personnel"))
+
+//department
+
+router.use("/department", require("./department"))
+
+module.exports=router
