@@ -74,3 +74,4 @@ const outputFile = './swagger.json'
 
 // RUN:
 swaggerAutogen(outputFile, routes, document)
+
