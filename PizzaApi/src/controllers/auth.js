@@ -40,7 +40,8 @@ module.exports = {
     if (user.password !== passwordEncrypt(password))
       throw new UnauthorizedError("Incorrect password")
 
-    let (!tokenData) = await Token.findOne({userId: user._id })
+    let tokenData = await Token.findOne({userId: user._id })
+    
     if (!tokenData) {
       const tokenKey = passwordEncrypt(user.id + Date.now());
       tokenData = await Token.create({ userId: user._id, token: tokenKey });

@@ -40,7 +40,7 @@ app.use(express.json());
 app.use(require("./src/middlewares/logger"));
 
 //! Auhentication:
-//app.use(require("./src/middlewares/authentication"));
+app.use(require("./src/middlewares/authentication"));
 
 // findSearchSortPage / res.getModelList:
 app.use(require("./src/middlewares/queryHandler"));
@@ -49,24 +49,21 @@ app.use(require("./src/middlewares/queryHandler"));
 // Routes:
 
 //! routes/index.js:
-// app.use("/", require("./src/routes/"));
-
+ app.use("/", require("./src/routes/"));
 // auth:
-app.use("/auth", require("./src/routes/auth"));
+//?app.use("/auth", require("./src/routes/auth"));
 // user:
-app.use("/user", require("./src/routes/user"));
+//?app.use("/user", require("./src/routes/user"));
 // token:
-app.use("/token", require("./src/routes/token"));
-
+//?app.use("/token", require("./src/routes/token"));
 // order:
-app.use("/order", require("./src/routes/order"));
+//?app.use("/order", require("./src/routes/order"));
 // pizza:
-app.use("/pizza", require("./src/routes/pizza"));
+//?app.use("/pizza", require("./src/routes/pizza"));
 // topping:
-app.use("/topping", require("./src/routes/topping"));
-
+//?app.use("/topping", require("./src/routes/topping"));
 // document:
-app.use("/documents", require("./src/routes/document"));
+//?app.use("/documents", require("./src/routes/document"));
 
 // HomePath:
 app.all("/", (req, res) => {
