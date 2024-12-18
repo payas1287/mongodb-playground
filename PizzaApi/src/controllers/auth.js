@@ -12,6 +12,7 @@ const {
   BadRequestError,
   NotFoundError,
 } = require("../errors/customError");
+const jwt = require("jsonwebtoken");
 
 module.exports = {
   login: async (req, res) => {
@@ -38,17 +39,48 @@ module.exports = {
     if (!user.isActive) throw new UnauthorizedError("This user is inactive");
 
     if (user.password !== passwordEncrypt(password))
-      throw new UnauthorizedError("Incorrect password")
+      throw new UnauthorizedError("Incorrect password");
 
-    let tokenData = await Token.findOne({userId: user._id })
-    
+    /* SIMPLE TOKEN*/
+    let tokenData = await Token.findOne({ userId: user._id });
+
     if (!tokenData) {
       const tokenKey = passwordEncrypt(user.id + Date.now());
       tokenData = await Token.create({ userId: user._id, token: tokenKey });
     }
+    /* JWT */
+
+    //ACCESS TOKEN
+    const accesData = {
+      _id: ıser._id,
+      username: user.username,
+      email: user.email,
+      isActive: user.isActive,
+      isAdmin: user.isAdmin,
+    };
+    // Convert to JWT:
+    // jwt.sign(payload, key, { expiresIn: '30m' })
+    const accessToken = jwt.sign(accessData, process.env.ACCESSKEY, {
+      expiresIn: "15m",
+    });
+
+    //REFRESH TOKEN:
+
+    const refreshData = {
+      _id: user._id,
+      password: user.password
+    }
+
+    //Convert to JWT:
+    const reefreshToken = jwt.sign(refreshData, process.env.REFRESH_KEY, { expiresIn: '3d' })
+
     res.status(200).send({
       error: false,
       token: tokenData.token,
+      bearer: {
+        access: accessToken,
+        refresh: reefreshToken
+      },
       user,
     });
   },
@@ -63,7 +95,7 @@ module.exports = {
     const tokenKey = auth ? auth.split(" ") : null;
     let deleted = null;
     if (tokenKey?.at(0) == "Token") {
-      deleted = await Token.deleteOne({ token: tokenKey[1]});
+      deleted = await Token.deleteOne({ token: tokenKey[1] });
     }
 
     res.send({

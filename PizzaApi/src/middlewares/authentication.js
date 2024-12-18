@@ -4,16 +4,29 @@
 ------------------------------------------------------- */
 
 const Token = require("../models/token");
+const jwt = require('jsonwebtoken')
 
 module.exports = async (req, res, next) => {
-  const auth = req.headers?.authorization || null;
-  const tokenKey = auth ? auth.split(" ") : null;
+  const auth = req.headers?.authorization || null; // Token ...tokenkey...
+  const tokenKey = auth ? auth.split(" ") : null; // ['Token', '...TokenKey...]
 
-  if (token && tokenKey[0] == "Token") {
-    const tokenData = await Token.findOne({ token: tokenKey[1] }).populate(
-      "userId"
-    );
+  if (tokenKey) {
+    if (tokenKey && tokenKey[0] == "Token") {
+      // SINPLE TOKEN
+      const tokenData = await Token.findOne({ token: tokenKey[1] }).populate(
+        "userId"
+      );
+    }
+
+    //console.log(tokenData);
     if (tokenData) req.user = tokenData.userId;
+  } else if (tokenKey[0] == 'Bearer') {
+    jwt.verify(tokenKey[1], process.envACCCESS_KEY, function(error, succcess){
+      console.log(accessData)
+      if (accessData) req.user = accessData
+    })
+
   }
+  //console.log("---------", req.user);
   next();
 };
