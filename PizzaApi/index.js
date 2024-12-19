@@ -45,7 +45,7 @@ app.use(require("./src/middlewares/authentication"));
 // findSearchSortPage / res.getModelList:
 app.use(require("./src/middlewares/queryHandler"));
 
-const nodemailer = require("nodemailer");
+//const nodemailer = require("nodemailer");
 
 //nodemailer.createTestAccount().then((data) => console.log(data));
 
@@ -59,16 +59,16 @@ const nodemailer = require("nodemailer");
 //   mxEnabled: false
 // }
 
-const transpoter = nodemailer.createTransport({
-  // SMTP:
-  host: "smtp.ethereal.email",
-  port: 587,
-  secure: false,
-  auth: {
-    user: "mpw7bnc2cw4rgsqc@ethereal.email",
-    pass: "v2gVc9S6YEkMcyaM4h",
-  },
-});
+// const transpoter = nodemailer.createTransport({
+//   // SMTP:
+//   host: "smtp.ethereal.email",
+//   port: 587,
+//   secure: false,
+//   auth: {
+//     user: "mpw7bnc2cw4rgsqc@ethereal.email",
+//     pass: "v2gVc9S6YEkMcyaM4h",
+//   },
+// });
 //console.log(transpoter)
 
 // SendMail:
