@@ -72,19 +72,29 @@ const transpoter = nodemailer.createTransport({
 //console.log(transpoter)
 
 // SendMail:
-transpoter.sendMail(
-  {
-    from: "mpw7bnc2cw4rgsqc@ethereal.email",
-    to: "qadir@calrusway.com",
-    subject: "Hello",
-    text: "Hello there. How are you?",
-    html: "<h2>Hello there.</h2> <p>how are you?</p>",
-  },
-  function (error, success) {
-    success ?console.log('SUCCESS:', success) : console.log('EROR:', error)
-  }
+// transpoter.sendMail(
+//   {
+//     from: "mpw7bnc2cw4rgsqc@ethereal.email",
+//     to: "payas@gmail.com",
+//     subject: "Hello",
+//     text: "Hello there. How are you?",
+//     html: "<h2>Hello there.</h2> <p>how are you?</p>",
+//   },
+//   function (error, success) {
+//     success ?console.log('SUCCESS:', success) : console.log('EROR:', error)
+//   }
 
-);
+// );
+
+//* GoogleMAil (gmail.com)
+
+const transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: "sehzade172041@gmail.com",
+    pass: "kcal qkpg nnkv onf"
+  }
+})
 
 /* ------------------------------------------------------- */
 // Routes:
