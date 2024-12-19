@@ -88,13 +88,34 @@ const transpoter = nodemailer.createTransport({
 
 //* GoogleMAil (gmail.com)
 
-const transporter = nodemailer.createTransport({
-  service: 'gmail',
-  auth: {
-    user: "sehzade172041@gmail.com",
-    pass: "kcal qkpg nnkv onf"
-  }
-})
+// const transporter = nodemailer.createTransport({
+//   service: "gmail",
+//   auth: {
+//     user: "sehzade172041@gmail.com",
+//     pass: "kcal qkpg nnkv onf",
+//   },
+// });
+// transpoter.sendMail(
+//   {
+//     to: "sehzadem172041@gmail.com",
+//     subject: "Hello",
+//     text: "Hello there. How are you?",
+//     html: "<h2>Hello there.</h2> <p>how are you today?</p>",
+//   },
+//   function (error, success) {
+//     success ? console.log("SUCCESS:", success) : console.log("EROR:", error);
+//   }
+// );
+
+//* YandexMail (yandex)
+
+// const transporter = nodemailer.createTransport({
+//     service: 'yandex',
+//     auth: {
+//         user: 'test@yandex.com',
+//         pass: '11' // your email-password
+//     }
+// })
 
 /* ------------------------------------------------------- */
 // Routes:
