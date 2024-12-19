@@ -12,6 +12,7 @@ const {
   BadRequestError,
   NotFoundError,
 } = require("../errors/customError");
+
 const jwt = require("jsonwebtoken");
 
 module.exports = {
@@ -103,7 +104,7 @@ module.exports = {
             }
         */
 
-    const ferfreshToken = req.body?.bearer?.refresh;
+    const refreshToken = req.body?.bearer?.refresh;
 
     if (refreshToken) {
       const refreshDAta = jwt.verify(refreshToken, process.env.REFRESH_KEY);
@@ -115,14 +116,14 @@ module.exports = {
             res.status(200).send({
               error: false,
               bearr: {
-                access: jwt.sign(user.toJSON(), process.env.ACCESSKEY)
-              }
-            })
-
-
+                access: jwt.sign(user.toJSON(), process.env.ACCESS_KEY, {
+                  expiresIn: process.env.ACCESS_EXP,
+                }),
+              },
+            });
           } else {
-            res.errorStatusCode = 401
-                        throw new Error("This account is not active.")
+            res.errorStatusCode = 401;
+            throw new Error("This account is not active.");
           }
         } else {
           res.errorStatusCode = 401;
@@ -144,34 +145,24 @@ module.exports = {
             #swagger.summary = "simpleToken: Logout"
             #swagger.description = 'Delete token key.'
         */
+
     const auth = req.headers?.authorization || null;
     const tokenKey = auth ? auth.split(" ") : null;
     let deleted = null;
-    if (tokenKey?.at(0) == "Token") {
-      deleted = await Token.deleteOne({ token: tokenKey[1] });
-    }
 
     if (tokenKey[0] == "Token") {
-
       const result = await Token.deleteOne({ token: tokenKey[1] });
 
       res.send({
-          error: false,
-          message: "Token deleted. Logout was OK.",
-          result,
+        error: false,
+        message: "Token deleted. Logout was OK.",
+        result,
       });
-
-  } else if (tokenKey[0] == "Bearer") {
-
+    } else if (tokenKey[0] == "Bearer") {
       res.send({
-          error: false,
-          message: 'JWT: No need any process for logout.',
-      })
-  }
-
-    res.send({
-      error: false,
-      message: "Token deleted. Logout was OK.",
-    });
+        error: false,
+        message: "JWT: No need any process for logout.",
+      });
+    }
   },
 };
