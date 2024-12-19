@@ -21,8 +21,7 @@ const UserSchema = new mongoose.Schema(
       type: String,
       trim: true,
       required: true,
-      set: passwordEncrypt
-     
+      set: passwordEncrypt,
     },
 
     email: {
@@ -32,7 +31,7 @@ const UserSchema = new mongoose.Schema(
       unique: true,
       validate: [
         //! regex: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
-        (email) => true,
+        (email) => /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email),
         "Email format is not correct.",
       ],
     },

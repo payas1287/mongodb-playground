@@ -50,7 +50,7 @@ module.exports = {
             #swagger.tags = ["Pizzas"]
             #swagger.summary = "Get Single Pizza"
         */
-    const data = await Pizza.findOne({ _id: req.paramas.id });
+    const data = await Pizza.findOne({ _id: req.params.id });
 
     res.status(200).send({
       error: false,
@@ -63,6 +63,7 @@ module.exports = {
             #swagger.tags = ["Pizzas"]
             #swagger.summary = "Update Pizza"
         */
+
     const data = await Pizza.updateOne({ _id: req.params.id }, req.body, {
       runValidators: true,
     });

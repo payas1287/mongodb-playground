@@ -13,7 +13,7 @@ const ToppingSchema = new mongoose.Schema(
       trim: true,
       required: true,
       unique: true,
-    }
+    },
   },
   {
     collection: "toppings",

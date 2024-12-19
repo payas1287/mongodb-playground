@@ -26,7 +26,7 @@ module.exports = {
 
     res.status(200).send({
       error: false,
-      detais: await res.getModelListDetails(Topping),
+      details: await res.getModelListDetails(Topping),
       data,
     });
   },
@@ -38,6 +38,7 @@ module.exports = {
             #swagger.tags = ["Toppings"]
             #swagger.summary = "Create Topping"
         */
+
     const data = await Topping.create(req.body);
 
     res.status(201).send({
@@ -51,6 +52,7 @@ module.exports = {
             #swagger.tags = ["Toppings"]
             #swagger.summary = "Get Single Topping"
         */
+
     const data = await Topping.findOne({ _id: req.params.id });
 
     res.status(200).send({
@@ -64,9 +66,11 @@ module.exports = {
             #swagger.tags = ["Toppings"]
             #swagger.summary = "Update Topping"
         */
+
     const data = await Topping.updateOne({ _id: req.params.id }, req.body, {
       runValidators: true,
     });
+
     res.status(202).send({
       error: false,
       data,
@@ -79,6 +83,7 @@ module.exports = {
             #swagger.tags = ["Toppings"]
             #swagger.summary = "Delete Topping"
         */
+
     const data = await Topping.deleteOne({ _id: req.params.id });
 
     res.status(data.deletedCount ? 204 : 404).send({

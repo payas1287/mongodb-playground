@@ -48,7 +48,10 @@ module.exports = (req, res, next) => {
 
   // Run for output:
   res.getModelList = async (Model, customFilter = {}, populate = null) => {
-    return await Model.find({ ...filter, ...search, ...customFilter }, {})
+    return await Model.find(
+      { ...filter, ...search, ...customFilter },
+      { password: 0, __v: 0 }
+    )
       .sort(sort)
       .skip(skip)
       .limit(limit)

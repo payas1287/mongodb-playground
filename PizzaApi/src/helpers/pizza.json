@@ -4,7 +4,7 @@
     "name": "Pepperoni Pizza",
     "image": "https://example.com/images/pepperoni-pizza.jpg",
     "price": 10,
-    "toppingIds": ["64c5ed12345a123456789012"]
+    "toppingIds": "64c5ed12345a123456789012"
   },
   {
     "_id": "64c5ed12345a123456789021",
