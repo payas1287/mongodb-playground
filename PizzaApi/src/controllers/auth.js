@@ -13,7 +13,7 @@ const {
   NotFoundError,
 } = require("../errors/customError");
 
-const jwt = require('jsonwebtoken')
+const jwt = require("jsonwebtoken");
 
 module.exports = {
   login: async (req, res) => {
@@ -61,20 +61,24 @@ module.exports = {
       email: user.email,
       isActive: user.isActive,
       isAdmin: user.isAdmin,
-    }
+    };
     // Convert to JWT:
     // jwt.sign(payload, key, { expiresIn: '30m' })
     // const accessToken = jwt.sign(accessData, process.env.ACCESS_KEY, { expiresIn: '30m' })
     // console.log(user)
-    const accessToken = jwt.sign(user.toJSON(), process.env.ACCESS_KEY, { expiresIn: process.env.ACCESS_EXP })
+    const accessToken = jwt.sign(user.toJSON(), process.env.ACCESS_KEY, {
+      expiresIn: process.env.ACCESS_EXP,
+    });
 
     // REFRESH TOKEN:
     const refreshData = {
       _id: user._id,
-      password: user.password
-    }
+      password: user.password,
+    };
     // Convert to JWT:
-    const refreshToken = jwt.sign(refreshData, process.env.REFRESH_KEY, { expiresIn: process.env.REFRESH_EXP })
+    const refreshToken = jwt.sign(refreshData, process.env.REFRESH_KEY, {
+      expiresIn: process.env.REFRESH_EXP,
+    });
     /* /JWT */
 
     res.status(200).send({
@@ -82,7 +86,7 @@ module.exports = {
       token: tokenData.token,
       bearer: {
         access: accessToken,
-        refresh: refreshToken
+        refresh: refreshToken,
       },
       user,
     });
@@ -104,45 +108,41 @@ module.exports = {
         }
     */
 
-    const refreshToken = req.body?.bearer?.refresh
+    const refreshToken = req.body?.bearer?.refresh;
 
     if (refreshToken) {
-
-      const refreshData = jwt.verify(refreshToken, process.env.REFRESH_KEY)
-      console.log(refreshData)
+      const refreshData = jwt.verify(refreshToken, process.env.REFRESH_KEY);
+      console.log(refreshData);
 
       if (refreshData) {
-
-        const user = await User.findOne({ _id: refreshData._id })
+        const user = await User.findOne({ _id: refreshData._id });
 
         if (user && user.password == refreshData.password) {
-
           if (user.isActive) {
-
             res.status(200).send({
               error: false,
               bearer: {
-                access: jwt.sign(user.toJSON(), process.env.ACCESS_KEY, { expiresIn: process.env.ACCESS_EXP })
-              }
-            })
-
+                access: jwt.sign(user.toJSON(), process.env.ACCESS_KEY, {
+                  expiresIn: process.env.ACCESS_EXP,
+                }),
+              },
+            });
           } else {
-            res.errorStatusCode = 401
-            throw new Error("This account is not active.")
+            res.errorStatusCode = 401;
+            throw new Error("This account is not active.");
           }
         } else {
-          res.errorStatusCode = 401
-          throw new Error('Wrong id or password.')
+          res.errorStatusCode = 401;
+          throw new Error("Wrong id or password.");
         }
       } else {
-        res.errorStatusCode = 401
-        throw new Error('JWT refresh data is wrong.')
+        res.errorStatusCode = 401;
+        throw new Error("JWT refresh data is wrong.");
       }
     } else {
-      res.errorStatusCode = 401
-      throw new Error('Please enter bearer.refresh')
+      res.errorStatusCode = 401;
+      throw new Error("Please enter bearer.refresh");
     }
-
   },
 
   logout: async (req, res) => {
@@ -158,21 +158,18 @@ module.exports = {
     let deleted = null;
 
     if (tokenKey[0] == "Token") {
+      const result = await Token.deleteOne({ token: tokenKey[1] });
 
-        const result = await Token.deleteOne({ token: tokenKey[1] });
-
-        res.send({
-            error: false,
-            message: "Token deleted. Logout was OK.",
-            result,
-        });
-
+      res.send({
+        error: false,
+        message: "Token deleted. Logout was OK.",
+        result,
+      });
     } else if (tokenKey[0] == "Bearer") {
-
-        res.send({
-            error: false,
-            message: 'JWT: No need any process for logout.',
-        })
+      res.send({
+        error: false,
+        message: "JWT: No need any process for logout.",
+      });
     }
   },
 };
