@@ -45,6 +45,47 @@ app.use(require("./src/middlewares/authentication"));
 // findSearchSortPage / res.getModelList:
 app.use(require("./src/middlewares/queryHandler"));
 
+const nodemailer = require("nodemailer");
+
+//nodemailer.createTestAccount().then((data) => console.log(data));
+
+// {
+//   user: 'mpw7bnc2cw4rgsqc@ethereal.email',
+//   pass: 'v2gVc9S6YEkMcyaM4h',
+//   smtp: { host: 'smtp.ethereal.email', port: 587, secure: false },
+//   imap: { host: 'imap.ethereal.email', port: 993, secure: true },
+//   pop3: { host: 'pop3.ethereal.email', port: 995, secure: true },
+//   web: 'https://ethereal.email',
+//   mxEnabled: false
+// }
+
+const transpoter = nodemailer.createTransport({
+  // SMTP:
+  host: "smtp.ethereal.email",
+  port: 587,
+  secure: false,
+  auth: {
+    user: "mpw7bnc2cw4rgsqc@ethereal.email",
+    pass: "v2gVc9S6YEkMcyaM4h",
+  },
+});
+//console.log(transpoter)
+
+// SendMail:
+transpoter.sendMail(
+  {
+    from: "mpw7bnc2cw4rgsqc@ethereal.email",
+    to: "qadir@calrusway.com",
+    subject: "Hello",
+    text: "Hello there. How are you?",
+    html: "<h2>Hello there.</h2> <p>how are you?</p>",
+  },
+  function (error, success) {
+    success ?console.log('SUCCESS:', success) : console.log('EROR:', error)
+  }
+
+);
+
 /* ------------------------------------------------------- */
 // Routes:
 
