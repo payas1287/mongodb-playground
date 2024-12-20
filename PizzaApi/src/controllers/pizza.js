@@ -39,6 +39,13 @@ module.exports = {
         */
     const data = await Pizza.create(req.body);
 
+    console.log('file', req.file)
+    console.log('files', req.files)
+
+    for (let file of req.files) {
+      data.image
+    }
+
     res.status(201).send({
       error: false,
       data,
