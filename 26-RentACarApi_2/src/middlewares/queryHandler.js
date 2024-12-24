@@ -46,7 +46,7 @@ module.exports = (req, res, next) => {
     /* FILTERING & SEARCHING & SORTING & PAGINATION */
 
     // Run for output:
-    res.getModelList = async (Model, customFilter = {}, populate = null) => {
+    res.getModelList = async ( Model,customFilter = {}, populate = null) => {
         return await Model.find({ ...filter, ...search, ...customFilter }).sort(sort).skip(skip).limit(limit).populate(populate)
     }
 
