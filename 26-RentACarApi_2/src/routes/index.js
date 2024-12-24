@@ -8,4 +8,4 @@ const router = require("express").Router();
 
 router.use("/auth", require("./auth"));
 router.use("/users", require("./user"));
-router.use("/cars", reuqire("./car"));
+router.use("/cars", require("./car"));
