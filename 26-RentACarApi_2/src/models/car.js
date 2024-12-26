@@ -1,8 +1,8 @@
-"use strict"
+"use strict";
 /* -------------------------------------------------------
     NODEJS EXPRESS | CLARUSWAY FullStack Team
 ------------------------------------------------------- */
-const { mongoose } = require('../configs/dbConnection')
+const { mongoose } = require("../configs/dbConnection");
 /* ------------------------------------------------------- *
 {
     "plateNumber": "34ABC123",
@@ -31,63 +31,61 @@ const { mongoose } = require('../configs/dbConnection')
 }
 /* ------------------------------------------------------- */
 // Car Model:
-const CarSchema = new mongoose.Schema({
-    plateNumber:{
-        type:String,
-        trim:true,
-        unique:true,
-        required:true
+const CarSchema = new mongoose.Schema(
+  {
+    plateNumber: {
+      type: String,
+      trim: true,
+      unique: true,
+      required: true,
     },
-    brand:{
-        type:String,
-        trim:true,
-        required:true
+    brand: {
+      type: String,
+      trim: true,
+      required: true,
     },
-    model:{
-        type:String,
-        trim:true,
-        required:true
+    model: {
+      type: String,
+      trim: true,
+      required: true,
     },
-    year:{
-        type:Number,
-        min:2000,
-        max:new Date().getFullYear(),
-        required:true
-
+    year: {
+      type: Number,
+      min: 2000,
+      max: new Date().getFullYear(),
+      required: true,
     },
-    isAutomatic:{
-        type:Boolean,
-        default:false
+    isAutomatic: {
+      type: Boolean,
+      default: false,
     },
-    pricePerDay:{
-        type:Number,
-        required:true
+    pricePerDay: {
+      type: Number,
+      required: true,
     },
     // images: [],
-    images:{
-        type:Array,
-        default:[]
+    images: {
+      type: Array,
+      default: [], //! image required olabilir
     },
-    isAvailable:{
-        type:Boolean,
-        default:true
+    isAvailable: {
+      type: Boolean,
+      default: true,
     },
-    createdId:{
-        type:mongoose.SchemaTypes.ObjectId,
-        ref:'User',
-        required:true
-
+    createdId: {
+      type: mongoose.SchemaTypes.ObjectId,
+      ref: "User",
+      required: true,
     },
-    updatedId:{
-        type:mongoose.SchemaTypes.ObjectId,
-        ref:'User',
-        required:true
-
-    }
-
-
-}, {
-    collection:'cars',
-    timestamps:true
-})
-module.exports = mongoose.model('Car',CarSchema)
+    updatedId: {
+      type: mongoose.SchemaTypes.ObjectId,
+      ref: "User",
+      required: true,
+    },
+  },
+  {
+    collection: "cars",
+    timestamps: true,
+  }
+);
+module.exports = mongoose.model("Car", CarSchema);
