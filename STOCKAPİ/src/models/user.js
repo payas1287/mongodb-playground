@@ -36,7 +36,7 @@ const UserSchema = new mongoose.Schema({
     required: true,
   },
   lastName: {
-    type: true,
+    type: String,
     trim: true,
     required: true,
   },
@@ -49,6 +49,6 @@ const UserSchema = new mongoose.Schema({
     default: false,
   },
 },
-{ collection: "user", timestamps: true});
+{ collection: "users", timestamps: true});
 
 module.exports = mongoose.model("User", UserSchema);
