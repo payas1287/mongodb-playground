@@ -24,6 +24,9 @@ module.export = {
   },
 
   create: async (req, res) => {
+    if((!req.user.isAdmin && !req.user.isStaff) || !req.user?.userId){
+        req.body.userId = req.user._id
+    }
     const userResevationDates = await Reservation.finOne({
       userId: req.body.userId,
       $nor: [
