@@ -14,7 +14,7 @@ module.exports = async function () {
     console.log('- Database and all data DELETED!')
     /* REMOVE DATABASE */
 
-    /* User */
+    /* User *
     const User = require('../models/user')
     await User.deleteMany() // !!! Clear collection.
     await User.create({
@@ -197,7 +197,7 @@ module.exports = async function () {
         "address": "B01-Z02 Maslak Büyükdere Cad. Uso Center 245/A, 34396 Sarıyer/İstanbul, Türkiye"
     })
 
-    /* Product *
+    /* Product */
     const Product = require('../models/product')
     await Product.deleteMany() // !!! Clear collection.
     await Product.create({
