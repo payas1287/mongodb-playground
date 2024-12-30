@@ -30,7 +30,7 @@ const PurchaseSchema = new mongoose.Schema(
   
     quantity: {
       type: Number,
-      defaults: 0,
+      default: 0,
     },
     price: {
       type: Number,
