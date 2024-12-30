@@ -1,0 +1,184 @@
+
+  [
+    {
+      "_id": "6769b4148d7488804efe7fb1",
+      "room_number": "101",
+      "bed_type": "single",
+      "price": 100,
+      "bed_space": 1,
+      "createdAt": "2024-12-23T19:03:48.302Z",
+      "updatedAt": "2024-12-23T19:03:48.302Z",
+      "__v": 0
+    },
+    {
+      "_id": "6769b41a8d7488804efe7fb5",
+      "room_number": "102",
+      "bed_type": "single",
+      "price": 100,
+      "bed_space": 1,
+      "createdAt": "2024-12-23T19:03:54.488Z",
+      "updatedAt": "2024-12-23T19:03:54.488Z",
+      "__v": 0
+    },
+    {
+      "_id": "6769b4218d7488804efe7fb9",
+      "room_number": "103",
+      "bed_type": "single",
+      "price": 100,
+      "bed_space": 1,
+      "createdAt": "2024-12-23T19:04:01.649Z",
+      "updatedAt": "2024-12-23T19:04:01.649Z",
+      "__v": 0
+    },
+    {
+      "_id": "6769b4268d7488804efe7fbd",
+      "room_number": "104",
+      "bed_type": "single",
+      "price": 100,
+      "bed_space": 1,
+      "createdAt": "2024-12-23T19:04:06.976Z",
+      "updatedAt": "2024-12-23T19:04:06.976Z",
+      "__v": 0
+    },
+    {
+      "_id": "6769b4298d7488804efe7fc1",
+      "room_number": "105",
+      "bed_type": "single",
+      "price": 100,
+      "bed_space": 1,
+      "createdAt": "2024-12-23T19:04:09.977Z",
+      "updatedAt": "2024-12-23T19:04:09.977Z",
+      "__v": 0
+    },
+    {
+      "_id": "6769b43d8d7488804efe7fc5",
+      "room_number": "201",
+      "bed_type": "double",
+      "price": 150,
+      "bed_space": 2,
+      "createdAt": "2024-12-23T19:04:29.745Z",
+      "updatedAt": "2024-12-23T19:04:29.745Z",
+      "__v": 0
+    },
+    {
+      "_id": "6769b4428d7488804efe7fc9",
+      "room_number": "202",
+      "bed_type": "double",
+      "price": 150,
+      "bed_space": 2,
+      "createdAt": "2024-12-23T19:04:34.800Z",
+      "updatedAt": "2024-12-23T19:04:34.800Z",
+      "__v": 0
+    },
+    {
+      "_id": "6769b4448d7488804efe7fcd",
+      "room_number": "203",
+      "bed_type": "double",
+      "price": 150,
+      "bed_space": 2,
+      "createdAt": "2024-12-23T19:04:36.916Z",
+      "updatedAt": "2024-12-23T19:04:36.916Z",
+      "__v": 0
+    },
+    {
+      "_id": "6769b4468d7488804efe7fd1",
+      "room_number": "204",
+      "bed_type": "double",
+      "price": 150,
+      "bed_space": 2,
+      "createdAt": "2024-12-23T19:04:38.292Z",
+      "updatedAt": "2024-12-23T19:04:38.292Z",
+      "__v": 0
+    },
+    {
+      "_id": "6769b4478d7488804efe7fd5",
+      "room_number": "205",
+      "bed_type": "double",
+      "price": 150,
+      "bed_space": 2,
+      "createdAt": "2024-12-23T19:04:39.986Z",
+      "updatedAt": "2024-12-23T19:04:39.986Z",
+      "__v": 0
+    },
+    {
+      "_id": "6769b4918d7488804efe7fdd",
+      "room_number": "301",
+      "bed_type": "family",
+      "bed_space": 3,
+      "price": 250,
+      "createdAt": "2024-12-23T19:05:53.685Z",
+      "updatedAt": "2024-12-23T19:05:53.685Z",
+      "__v": 0
+    },
+    {
+      "_id": "6769b4978d7488804efe7fe1",
+      "room_number": "302",
+      "bed_type": "family",
+      "bed_space": 4,
+      "price": 250,
+      "createdAt": "2024-12-23T19:05:59.954Z",
+      "updatedAt": "2024-12-23T19:05:59.954Z",
+      "__v": 0
+    },
+    {
+      "_id": "6769b4b18d7488804efe7fe5",
+      "room_number": "303",
+      "bed_type": "family",
+      "bed_space": 5,
+      "price": 250,
+      "createdAt": "2024-12-23T19:06:25.149Z",
+      "updatedAt": "2024-12-23T19:06:25.149Z",
+      "__v": 0
+    },
+    {
+      "_id": "6769b4b88d7488804efe7fe9",
+      "room_number": "304",
+      "bed_type": "family",
+      "bed_space": 6,
+      "price": 250,
+      "createdAt": "2024-12-23T19:06:32.877Z",
+      "updatedAt": "2024-12-23T19:06:32.877Z",
+      "__v": 0
+    },
+    {
+      "_id": "6769b4be8d7488804efe7fed",
+      "room_number": "305",
+      "bed_type": "family",
+      "bed_space": 7,
+      "price": 250,
+      "createdAt": "2024-12-23T19:06:38.848Z",
+      "updatedAt": "2024-12-23T19:06:38.848Z",
+      "__v": 0
+    },
+    {
+      "_id": "6769b4ffa4a615222cbef2d6",
+      "room_number": "401",
+      "bed_type": "king",
+      "bed_space": 7,
+      "price": 700,
+      "createdAt": "2024-12-23T19:07:43.311Z",
+      "updatedAt": "2024-12-23T19:07:43.311Z",
+      "__v": 0
+    },
+    {
+      "_id": "6769b502a4a615222cbef2da",
+      "room_number": "402",
+      "bed_type": "king",
+      "bed_space": 7,
+      "price": 700,
+      "createdAt": "2024-12-23T19:07:46.476Z",
+      "updatedAt": "2024-12-23T19:07:46.476Z",
+      "__v": 0
+    },
+    {
+      "_id": "6769b504a4a615222cbef2de",
+      "room_number": "403",
+      "bed_type": "king",
+      "bed_space": 7,
+      "price": 700,
+      "createdAt": "2024-12-23T19:07:48.497Z",
+      "updatedAt": "2024-12-23T19:07:48.497Z",
+      "__v": 0
+    }
+  ]
+  
