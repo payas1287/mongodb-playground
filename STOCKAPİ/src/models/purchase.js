@@ -12,16 +12,19 @@ const PurchaseSchema = new mongoose.Schema(
       ref: "User",
       required: true,
     },
-    brandId: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Brand",
-      required: true,
-    },
+
     firmId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Firm",
       required: true,
     },
+
+    brandId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Brand",
+      required: true,
+    },
+
     productId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Product",
@@ -32,20 +35,21 @@ const PurchaseSchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
+
     price: {
       type: Number,
       required: true,
     },
+
     priceTotal: {
       type: Number,
-      required: true,
       default: function () {
         return this.quantity * this.price;
-      },
+      }, // runs on create
       set: function () {
         return this.quantity * this.price;
-      }, // doest run data not sent
-      transform: function () {
+      }, // doest run if data not sent
+      transfom: function () {
         return this.quantity * this.price;
       }, // runs on update
     },

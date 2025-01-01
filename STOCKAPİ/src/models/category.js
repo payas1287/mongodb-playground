@@ -10,10 +10,14 @@ const CategorySchema = new mongoose.Schema(
     name: {
       type: String,
       trim: true,
-      unique: true,
       required: true,
+      unique: true,
     },
   },
-  { collection: "categories", timestamps: true }
+  {
+    collection: "categories",
+    timestamps: true,
+  }
 );
+
 module.exports = mongoose.model("Category", CategorySchema);

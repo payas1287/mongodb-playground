@@ -5,34 +5,47 @@
 const { mongoose } = require("../configs/dbConnection");
 /* ------------------------------------------------------- */
 
-const SalesSchema = new mongoose.Schema(
+const SaleSchema = new mongoose.Schema(
   {
     userId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
       required: true,
     },
+
     brandId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Brand",
       required: true,
     },
+
     productId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Product",
       required: true,
     },
+
     quantity: {
       type: Number,
-      default: 0,
-    },
-    price: {
-      Type: Number,
       required: true,
     },
-    priceTotal: {
+
+    price: {
       type: Number,
       required: true,
+    },
+
+    priceTotal: {
+      type: Number,
+      default: function () {
+        return this.quantity * this.price;
+      }, // runs on create
+      set: function () {
+        return this.quantity * this.price;
+      }, // doest run if data not sent
+      transfom: function () {
+        return this.quantity * this.price;
+      }, // runs on update
     },
   },
   {
@@ -41,4 +54,4 @@ const SalesSchema = new mongoose.Schema(
   }
 );
 
-module.exports = mongoose.model("Sales", SalesSchema);
+module.exports = mongoose.model("Sale", SaleSchema);

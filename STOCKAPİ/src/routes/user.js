@@ -1,12 +1,17 @@
-"use strict";
+"use strict"
 /* -------------------------------------------------------
     | FULLSTACK TEAM | NODEJS / EXPRESS |
 ------------------------------------------------------- */
-const router = require("express").Router();
-const { list, create ,read, update, deleteUser } = require("../controllers/user");
+const router = require('express').Router()
 /* ------------------------------------------------------- */
 
-router.route("/").get(list).post(create);
-router.route("/:id").get(read).put(update).patch(update).delete(deleteUser)
+const { list, create, read, update, deletee } = require('../controllers/user');
 
+// URL: /users
+
+router.route('/').get(list).post(create);
+
+router.route('/:id').get(read).put(update).patch(update).delete(deletee);
+
+/* ------------------------------------------------------- */
 module.exports = router;
