@@ -22,7 +22,7 @@ module.exports = {
     const user = await User.findOne({ $or: [{ username }, { email }] });
 
     if (!user) {
-      throw new NotFoundError("username/email is npt found");
+      throw new NotFoundError("username/email is not found");
     }
     if (user.password !== passwordEncrypt(password)) {
       throw new UnauthorizedError("password is imcorrect");
