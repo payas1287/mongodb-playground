@@ -27,10 +27,10 @@ const PurchaseSchema = new mongoose.Schema(
       ref: "Product",
       required: true,
     },
-  
+
     quantity: {
       type: Number,
-      default: 0,
+      required: true,
     },
     price: {
       type: Number,
@@ -39,6 +39,15 @@ const PurchaseSchema = new mongoose.Schema(
     priceTotal: {
       type: Number,
       required: true,
+      default: function () {
+        return this.quantity * this.price;
+      },
+      set: function () {
+        return this.quantity * this.price;
+      }, // doest run data not sent
+      transform: function () {
+        return this.quantity * this.price;
+      }, // runs on update
     },
   },
   {
