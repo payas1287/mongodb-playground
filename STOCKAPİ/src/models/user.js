@@ -90,5 +90,4 @@ UserSchema.pre(["save", "updateOne"], function (next) {
   if (data.password) data.password = passwordEncrypt(data.password);
   next();
 });
-
 module.exports = mongoose.model("User", UserSchema);

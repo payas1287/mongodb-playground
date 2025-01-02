@@ -11,16 +11,13 @@ const {
   UnauthorizedError,
 } = require("../errors/customErrors");
 const passwordEncrypt = require("../helpers/passwordEncrypt");
-
 module.exports = {
   login: async (req, res) => {
     const { username, email, password } = req.body;
-
     if (!((username || email) && password)) {
       throw new BadRequestError("Username/email or password is required");
     }
     const user = await User.findOne({ $or: [{ username }, { email }] });
-
     if (!user) {
       throw new NotFoundError("username/email is not found");
     }
@@ -42,18 +39,15 @@ module.exports = {
     const auth = req.headers?.authorization || null;
     const tokenKey = auth ? auth.split(" ") : null;
     let deleted = null;
-
     if (!tokenKey) {
       return res.status(400).send({
         error: true,
         message: "invalid token",
       });
     }
-
     if (tokenKey?.at(0) === "Token") {
       deleted = await Token.deleteOne({ token: tokenKey[1] });
     }
-
     res.send({
       error: false,
       message: "Logout was OK.",
