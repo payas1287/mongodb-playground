@@ -12,35 +12,29 @@ const PurchaseSchema = new mongoose.Schema(
       ref: "User",
       required: true,
     },
-
     firmId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Firm",
       required: true,
     },
-
     brandId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Brand",
       required: true,
     },
-
     productId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Product",
       required: true,
     },
-
     quantity: {
       type: Number,
       required: true,
     },
-
     price: {
       type: Number,
       required: true,
     },
-
     priceTotal: {
       type: Number,
       default: function () {
