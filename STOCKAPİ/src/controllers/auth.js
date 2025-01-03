@@ -11,11 +11,14 @@ const {
   UnauthorizedError,
 } = require("../errors/customErrors");
 const passwordEncrypt = require("../helpers/passwordEncrypt");
+const jwt = require("jsonwebtoken");
 module.exports = {
   login: async (req, res) => {
     const { username, email, password } = req.body;
     if (!((username || email) && password)) {
-      throw new BadRequestError("Username/email or password is required");
+      //throw new BadRequestError("Username/email or password is required");
+      req.errorStatusCode = 401;
+      throw new Error("Please enter username/email and password");
     }
     const user = await User.findOne({ $or: [{ username }, { email }] });
     if (!user) {
@@ -35,6 +38,8 @@ module.exports = {
       user,
     });
   },
+
+  refresh: async () => {},
   logout: async (req, res) => {
     const auth = req.headers?.authorization || null;
     const tokenKey = auth ? auth.split(" ") : null;
