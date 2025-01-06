@@ -1,0 +1,7 @@
+FROM node:current-alpine3.21
+
+WORKDIR /backend
+
+COPY . .
+
+RUN mkdir -p logs
