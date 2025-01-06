@@ -1,0 +1,12 @@
+FROM node:current-alpine3.21
+
+WORKDIR /app
+
+# COPY helle.js /app
+
+COPY . .
+
+CMD [ "node", "hello.js" ]
+
+
+
