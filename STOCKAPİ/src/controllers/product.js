@@ -1,13 +1,14 @@
-"use strict";
+"use strict"
 /* -------------------------------------------------------
     | FULLSTACK TEAM | NODEJS / EXPRESS |
 ------------------------------------------------------- */
 
-const Product = require("../models/product");
+const Product = require('../models/product');
 
 module.exports = {
-  list: async (req, res) => {
-    /* 
+
+    list: async (req, res) => {
+        /* 
             #swagger.tags = ["Products"]
             #swagger.summary = "List Products"
             #swagger.description = `
@@ -20,18 +21,21 @@ module.exports = {
             `
         */
 
-    const data = await res.getModelList(Product);
+        const data = await res.getModelList(Product, {}, [
+            // { path: 'categoryId', select: 'name' },
+            { path: 'brandId', select: 'name' }
+        ])
 
-    res.status(200).send({
-      error: false,
-      details: await res.getModelListDetails(Product),
-      data,
-    });
-  },
+        res.status(200).send({
+            error: false,
+            details: await res.getModelListDetails(Product),
+            data
+        })
+    },
 
-  // CRUD:
-  create: async (req, res) => {
-    /* 
+    // CRUD:
+    create: async (req, res) => {
+        /* 
             #swagger.tags = ["Products"]
             #swagger.summary = "Create Product"
             #swagger.parameters['body'] = {
@@ -43,30 +47,33 @@ module.exports = {
             }
         */
 
-    const data = await Product.create(req.body);
+        const data = await Product.create(req.body)
 
-    res.status(201).send({
-      error: false,
-      data,
-    });
-  },
+        res.status(201).send({
+            error: false,
+            data
+        })
+    },
 
-  read: async (req, res) => {
-    /* 
+    read: async (req, res) => {
+        /* 
            #swagger.tags = ["Products"]
            #swagger.summary = "Get Single Product"
         */
 
-    const data = await Product.findOne({ _id: req.params.id });
+        const data = await Product.findOne({ _id: req.params.id }).populate([
+            // { path: 'categoryId', select: 'name' },
+            { path: 'brandId', select: 'name' }
+        ]);
 
-    res.status(200).send({
-      error: false,
-      data,
-    });
-  },
+        res.status(200).send({
+            error: false,
+            data
+        })
+    },
 
-  update: async (req, res) => {
-    /* 
+    update: async (req, res) => {
+        /* 
             #swagger.tags = ["Products"]
             #swagger.summary = "Update Product"
             #swagger.parameters['body'] = {
@@ -78,30 +85,30 @@ module.exports = {
             }
         */
 
-    const data = await Product.updateOne({ _id: req.params.id }, req.body, {
-      runValidators: true,
-    });
+        const data = await Product.updateOne({ _id: req.params.id }, req.body, { runValidators: true })
 
-    res.status(202).send({
-      error: false,
-      data,
-      new: await Product.findOne({ _id: req.params.id }),
-    });
-  },
 
-  deletee: async (req, res) => {
-    /* 
+        res.status(202).send({
+            error: false,
+            data,
+            new: await Product.findOne({ _id: req.params.id })
+        })
+    },
+
+    deletee: async (req, res) => {
+        /* 
             #swagger.tags = ["Products"]
             #swagger.summary = "Delete Single Product"
         */
 
-    const data = await Product.deleteOne({ _id: req.params.id });
+        const data = await Product.deleteOne({ _id: req.params.id })
 
-    res.status(data.deletedCount ? 204 : 404).send({
-      error: true,
-      message: "Something went wrong, data might be deleted already.",
-    });
-  },
+        res.status(data.deletedCount ? 204 : 404).send({
+            error: true,
+            message: 'Something went wrong, data might be deleted already.'
+        })
+    },
 
-  //todo multiDelete controller
-};
+    //todo multiDelete controller
+
+}
