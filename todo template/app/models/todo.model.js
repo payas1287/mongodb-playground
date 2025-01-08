@@ -9,14 +9,14 @@ const { Sequelize, DataTypes } = require('sequelize')
 
 // DB Connection Settings:
 //* SQLite
-// const sequelize = new Sequelize('sqlite:./db.sqlite3')
+ const sequelize = new Sequelize('sqlite:./db.sqlite3')
 // const sequelize = new Sequelize('sqlite:' + process.env.SQLITE)
 // const sequelize = new Sequelize('sqlite:' + (process.env.SQLITE || './db.sqlite3'))
 
 //* Postgresql
 // npm i pg pg-hstore
 // Local IP: 127.0.0.1 - Local Host: localhost
-const sequelize = new Sequelize('postgres://user-ch17:user-ch17@127.0.0.1:5432/test-ch17')
+//const sequelize = new Sequelize('postgres://user-ch17:user-ch17@127.0.0.1:5432/test-ch17')
 
 // Model:
 // Her model, veritabanında bir tabloya karşılık gelir.
