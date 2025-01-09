@@ -16,47 +16,41 @@ const PORT = process.env.PORT || 8000;
 
 /* ------------------------------------------------------- */
 // Accept JSON data and convert to object (for API):
-app.use(express.json())
+app.use(express.json());
 
 // express-async-errors: catch async-errors and send to errorHandler:
-require('express-async-errors')
+require("express-async-errors");
 
 /* ------------------------------------------------------- */
 // Template:
 // npm i ejs
-app.set('view engine', 'ejs')
+app.set("view engine", "ejs");
 // default tamplate folder : ./views
-
-
+app.set("views", "./public");
 
 /* ------------------------------------------------------- */
 //* Routes:
-app.all('/', (req, res) => {
+app.all("/", (req, res) => {
+  // res.render('index.ejs')
+  // res.render('index')
 
+  res.send(` <p><a href="/views">Todo Template</a></p>
+        <p><a href="api">Todo RestAPY</a></p>`);
+});
 
-    // res.render('index.ejs')
-    res.render('index')
-
-    // res.send({
-    //     error: false,
-    //     message: 'Welcome to EJS Todo Project'
-    // })
-})
-
-
-app.use('/todos', require('./app/routes/todo.router'))
+app.use("/todos", require("./app/routes/todo.router"));
 
 /* ------------------------------------------------------- */
 const errorHandler = (err, req, res, next) => {
-    const errorStatusCode = res.errorStatusCode ?? 500
-    console.log('errorHandler worked.')
-    res.status(errorStatusCode).send({
-        error: true, // special data
-        message: err.message, // error string message
-        cause: err.cause, // error option cause
-        // stack: err.stack, // error details
-    })
-}
-app.use(errorHandler)
+  const errorStatusCode = res.errorStatusCode ?? 500;
+  console.log("errorHandler worked.");
+  res.status(errorStatusCode).send({
+    error: true, // special data
+    message: err.message, // error string message
+    cause: err.cause, // error option cause
+    // stack: err.stack, // error details
+  });
+};
+app.use(errorHandler);
 /* ------------------------------------------------------- */
 app.listen(PORT, () => console.log("Running: http://127.0.0.1:" + PORT));
