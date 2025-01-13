@@ -45,8 +45,15 @@ const BlogsSchema = new mongoose.Schema(
       index: true,
     },
     likes: {
-        
-    }
+      type: "Boolean",
+      index: true,
+    },
+    countOfVisitors: {
+      type: "Number",
+      index: true,
+    },
   },
   { collection: "blogs", timestamps: true }
 );
+
+module.exports = mongoose.model("Blogs", BlogsSchema);
