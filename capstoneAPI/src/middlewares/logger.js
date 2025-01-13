@@ -22,7 +22,7 @@ if (!fs.existsSync(logDirectory)) {
 
 const logStream = fs.createWriteStream(
   path.join(logDirectory, `${today}.log`),
-  { flags: "a+" },
+  { flags: "a+" }
 );
 
 module.exports = morgan("combined", {
