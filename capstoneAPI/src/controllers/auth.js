@@ -7,8 +7,8 @@
     | FULLSTACK TEAM | NODEJS / EXPRESS |
 ------------------------------------------------------- */
 
-const User = require("../models/user");
-const Token = require("../models/token");
+const User = require("../models/users");
+const Token = require("../models/tokens");
 const passwordEncrypt = require("../helpers/passwordEncrypt");
 const jwt = require("jsonwebtoken");
 
