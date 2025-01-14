@@ -22,7 +22,7 @@ const CommentsSchema = new mongoose.Schema(
     },
 
     comment: {
-      types: String,
+      type: String,
       index: true,
     },
   },

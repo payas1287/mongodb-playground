@@ -19,7 +19,7 @@ router.use("/blogs", require("./blogs"));
 //* comments:
 router.use("/comments", require("./comments"));
 //* category:
-router.use("/categories", require("./category"));
+router.use("/categories", require("./categories"));
 
 /* ------------------------------------------------------- */
 module.exports = router;

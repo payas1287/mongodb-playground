@@ -5,16 +5,16 @@
 const router = require("express").Router();
 /* ------------------------------------------------------- */
 
-const { list, create, read, update, deletee } = require("../controllers/token");
+const { list, create, update, deletee } = require("../controllers/token");
 const { isAdmin } = require("../middlewares/permissions");
 
 // URL: /tokens
 
 router.use(isAdmin);
 
-router.route("/").get(list).post(create);
+ router.route("/").get(list).post(create);
 
-router.route("/:id").get(read).put(update).patch(update).delete(deletee);
+router.route("/:id").put(update).patch(update).delete(deletee);
 
 /* ------------------------------------------------------- */
 module.exports = router;

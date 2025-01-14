@@ -11,7 +11,7 @@ const {
   read,
   update,
   deletee,
-} = require("../controllers/category");
+} = require("../controllers/categories");
 const { isAdmin } = require("../middlewares/permissions");
 
 // URL: /categories

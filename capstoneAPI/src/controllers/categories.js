@@ -2,7 +2,7 @@
 /* -------------------------------------------------------
     | FULLSTACK TEAM | NODEJS / EXPRESS |
 ------------------------------------------------------- */
-const Categories = require("../models/categories");
+const Category = require("../models/categories");
 
 module.exports = {
   list: async (req, res) => {
@@ -18,7 +18,7 @@ module.exports = {
                 </ul>
             `
         */
-    const data = await res.getModelList(Category);
+    const data = await res.getModelList(Categories);
     res.status(200).send({
       error: false,
       details: await res.getModelListDetails(Categories),
