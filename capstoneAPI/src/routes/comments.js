@@ -11,9 +11,9 @@ const {
   read,
   update,
   deletee,
-} = require("../controllers/category");
+} = require("../controllers/comments");
 
-// URL: /categories
+// URL: /comments
 
 router.route("/").get(list).post(create);
 
